@@ -8,7 +8,7 @@ pipeline {
     stage('Run') {
       steps {
         script {
-          sh 'mvn -B -ntp -Dmaven.test.failure.ignore verify'
+          sh 'mvn clean package test -U'
         }
       }
     }
