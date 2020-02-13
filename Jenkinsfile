@@ -1,19 +1,13 @@
 pipeline {
-  agent {
-    kubernetes {
-      label BUILD_TAG
-      containerTemplate {
-        name 'maven'
-        image 'maven'
-        command 'sleep'
-        args 'infinity'
-      }
+  agent any
+  tools {
+        maven 'apache-3.3.3' 
+        jdk 'jdk-1.8.221'
     }
-  }
   stages {
     stage('Run') {
       steps {
-        container('maven') {
+        script {
           sh 'mvn -B -ntp -Dmaven.test.failure.ignore verify'
         }
       }
