@@ -5,10 +5,10 @@ pipeline {
         jdk 'jdk-1.8.221'
     }
   stages {
-    stage('Run') {
+    stage('Build') {
       steps {
         script {
-          sh 'mvn clean package test -U'
+          sh 'mvn clean package -U'
         }
       }
     }
