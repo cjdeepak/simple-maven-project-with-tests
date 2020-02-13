@@ -8,7 +8,7 @@ pipeline {
     stage('Build') {
       steps {
         script {
-          sh 'mvn clean package -U'
+          sh 'mvn clean package -U -Dmaven.test.failure.ignore'
         }
       }
     }
